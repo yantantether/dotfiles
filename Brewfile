@@ -1,5 +1,6 @@
 tap "adoptopenjdk/openjdk"
 
+brew "antigen"
 brew "cmake"
 brew "coreutils"
 brew "gcc"
