@@ -1,0 +1,8 @@
+[user]
+  name = Pat Turner
+  email = patrick.turner@nhs.net
+[includeIf "gitdir:personal"]
+  path = ~/.gitconfig-personal
+[alias]
+  co = checkout
+  br = branch
