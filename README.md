@@ -5,17 +5,17 @@
 
 ## Installation
 
+### Install Brew
+
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+```
+
 ### Clone this dotfiles repo
 
 ```
 git clone git@github.com:yantantether/dotfiles.git ~/.dotfiles
 cd .dotfiles
-```
-
-### Install Brew
-
-```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
 
 ### Install software packages
@@ -27,6 +27,5 @@ brew bundle
 ### Symlink dotfiles
 
 ```
-cd .dotfiles
-stow git
+stow git m2 zsh
 ```
