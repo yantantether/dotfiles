@@ -15,6 +15,7 @@ brew "postgresql"
 brew "python"
 brew "ruby"
 brew "wget"
+brew "stow"
 brew "yarn"
 brew "zsh"
 
