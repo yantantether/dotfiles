@@ -62,3 +62,10 @@ brew bundle
 ```
 stow git m2 zsh
 ```
+
+### iterm2
+
+```
+cd iterm2
+./iterm2-config.sh
+```
