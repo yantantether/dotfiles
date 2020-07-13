@@ -6,3 +6,5 @@
 [alias]
   co = checkout
   br = branch
+[pull]
+	rebase = false
