@@ -6,3 +6,5 @@ antigen init ~/.antigenrc
 
 # JAVA_HOME set for maven
 export JAVA_HOME=`/usr/libexec/java_home`
+
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
