@@ -1,3 +1,4 @@
+auchenberg.vscode-browser-preview
 christherama.django-test-runner
 christian-kohler.path-intellisense
 DavidAnson.vscode-markdownlint
@@ -8,6 +9,7 @@ Equinusocio.vsc-material-theme
 equinusocio.vsc-material-theme-icons
 eseom.nunjucks-template
 foxundermoon.shell-format
+m-thorsen.vscode-materia
 mikestead.dotenv
 ms-azuretools.vscode-docker
 ms-python.python
