@@ -1,4 +1,6 @@
 {
     "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
-    "editor.fontFamily": "FiraCode Nerd Font"
+    "editor.fontFamily": "FiraCode Nerd Font",
+    "gitlens.advanced.abbreviatedShaLength": 7,
+    "python.analysis.diagnosticPublishDelay": 1001
 }
