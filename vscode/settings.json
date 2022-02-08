@@ -2,5 +2,24 @@
     "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
     "editor.fontFamily": "FiraCode Nerd Font",
     "gitlens.advanced.abbreviatedShaLength": 7,
-    "python.analysis.diagnosticPublishDelay": 1001
+    "python.analysis.diagnosticPublishDelay": 1001,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "python.languageServer": "Pylance",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "explorer.confirmDragAndDrop": false,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "git.confirmSync": false
 }
