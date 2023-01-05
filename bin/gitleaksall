@@ -1,0 +1,14 @@
+#!/bin/bash
+
+for d in `ls -d */`;
+do; 
+    cd $d; 
+    if [ ! -f .gitleaks.toml ];
+    then; 
+        wget "https://gitlab.com/nhsbsa/immigration-health-surcharge/ihs-open-source-secrets-detection/-/raw/feature/ihsri-1537-general-gitleaks-config/gitleaks.toml";
+    fi; 
+    pwd; 
+    gitleaks detect -r ../gitleaks.json ;
+    cp gitleaks.json "../gitleaks-${d}.json";
+    cd - ;
+done

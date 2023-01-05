@@ -20,6 +20,12 @@
         "jupyter-notebook": "left"
     },
     "explorer.confirmDragAndDrop": false,
-    "diffEditor.ignoreTrimWhitespace": false,
-    "git.confirmSync": false
+    "git.confirmSync": false,
+    "terminal.integrated.scrollback": 10000,
+    "redhat.telemetry.enabled": false,
+    "thunder-client.saveToWorkspace": true,
+    "workbench.startupEditor": "none",
+    "go.toolsManagement.autoUpdate": true,
+    "window.zoomLevel": 1,
+    "explorer.confirmDelete": false
 }
