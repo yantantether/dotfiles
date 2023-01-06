@@ -62,6 +62,12 @@ brew bundle
 stow git m2 zsh
 ```
 
+or create symlinks using a homegrown stow.sh if stow isn't installed
+
+```bash
+stow.sh git m2 zsh
+```
+
 ### iterm2
 
 ``` bash
