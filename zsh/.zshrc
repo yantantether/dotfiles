@@ -1,9 +1,3 @@
-# Load Antigen
-source /usr/local/share/antigen/antigen.zsh
-
-# Load Antigen configurations
-antigen init ~/.antigenrc
-
 function setjdk() {
   if [ $# -ne 0 ]; then
    removeFromPath '/System/Library/Frameworks/JavaVM.framework/Home/bin'
@@ -34,27 +28,51 @@ function dotenv() {
      fi
 }
 
+# Path to your oh-my-zsh installation.
+ZSH_DISABLE_COMPFIX=true
+export ZSH="$HOME/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="robbyrussell"
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
+
+# load oh-my-zsh
+source $ZSH/oh-my-zsh.sh
+
 # setjdk 11
 
 #if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 # node certs
-export NODE_EXTRA_CA_CERTS=/Users/patrick.turner/.npm/nhsbsa_aws_ca_all.pem
+#export NODE_EXTRA_CA_CERTS=/Users/patrick.turner/.npm/nhsbsa_aws_ca_all.pem
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #homebrew
-export PATH="/usr/local/sbin:$PATH"
+#export PATH="/usr/local/sbin:$PATH"
 
 #local scripts
-export PATH="$HOME/.dotfiles/bin:$PATH"
-
-#python
+export PATH="$HOME/dotfiles/bin:$PATH"
 
 #poetry
 export PATH="$HOME/.local/bin:$PATH"
 #alias gitauthors="(base=`pwd`; for d in `find . -name .git | xargs -I % dirname %`; do; cd $d 2>&1 > /dev/null; git --no-pager shortlog -sne | cut -f 2-; cd $base ; done) | sort | uniq"
 
-. /usr/local/opt/asdf/libexec/asdf.sh
+#openssl
+export PATH="${HOMEBREW_PREFIX}/opt/openssl/bin:$PATH"
+
+#Docker
+source /Users/pattu/.docker/init-zsh.sh || true # Added by Docker Desktop
+
+#. /usr/local/opt/asdf/libexec/asdf.sh
