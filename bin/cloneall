@@ -7,6 +7,8 @@ function checkargs {
     if (( $num_args < $expected_args )) ;
     then
         echo $msg
+        echo "Usage:"
+        echo "cloneall <profile> <group/org ID> <optional Gitlab host>"
         exit $expected_args
     fi
 }
@@ -16,12 +18,38 @@ function cloneall_gitlab {
     PROFILE=$1
     GROUP=$2
     GL_HOST=$3
+    DIR=`basename $PWD`
     eval PAT=\$${1}_PAT
-    echo Cloning all repositories for Gitlab group $GROUP on $GL_HOST    
-    for repo in $(curl -s --header "PRIVATE-TOKEN: $PAT" "https://$GL_HOST/api/v4/groups/$GROUP" | jq -r ".projects[].ssh_url_to_repo");
+    echo "Cloning all repositories for Gitlab group $DIR[$GROUP] on $GL_HOST"
+
+    #clone repos in group
+    for project_id in $(curl -s --header "PRIVATE-TOKEN: $PAT" "https://$GL_HOST/api/v4/groups/$GROUP/projects" | jq -r ".[].id");
     do
-        git clone $repo;
+        project_path=$(curl -s --header "PRIVATE-TOKEN: $PAT" "https://$GL_HOST/api/v4/projects/$project_id" | jq -r ".path");
+        if [ ! -d $project_path ]
+        then
+            project_ssh_url=$(curl -s --header "PRIVATE-TOKEN: $PAT" "https://$GL_HOST/api/v4/projects/$project_id" | jq -r ".ssh_url_to_repo");
+            echo "git clone $project_path"
+            git clone $project_ssh_url;
+        else
+            echo "git pull $project_path"
+            (cd $project_path; git pull)
+        fi
     done
+
+    #recurse for groups
+    for sub_group_id in $(curl -s --header "PRIVATE-TOKEN: $PAT" "https://$GL_HOST/api/v4/groups/$GROUP/subgroups" | jq -r ".[].id");
+    do
+        sub_group_path=$(curl -s --header "PRIVATE-TOKEN: $PAT" "https://$GL_HOST/api/v4/groups/$sub_group_id" | jq -r ".path");
+        if [ ! -d $sub_group_path ]
+        then
+            mkdir $sub_group_path
+        fi
+        cd $sub_group_path
+        cloneall_gitlab $PROFILE $sub_group_id $GL_HOST
+        cd ..
+    done
+    
 }
 
 function cloneall_github {
@@ -34,6 +62,7 @@ checkargs $# 1 "First arg must be a profile (GH, GL, GL_DPS)"
 PROFILE=$1
 if [[ $PROFILE == GH* ]]
 then
+    checkargs $# 2 "Second arg must be a Github org ID"
     cloneall_github $2
 elif [[ $PROFILE == GL* ]]
 then
