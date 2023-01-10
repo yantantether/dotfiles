@@ -23,7 +23,7 @@ function cloneall_gitlab {
     echo "Cloning all repositories for Gitlab group $DIR[$GROUP] on $GL_HOST"
 
     #clone repos in group
-    for project_id in $(curl -s --header "PRIVATE-TOKEN: $PAT" "https://$GL_HOST/api/v4/groups/$GROUP/projects" | jq -r ".[].id");
+    for project_id in $(curl -s --header "PRIVATE-TOKEN: $PAT" "https://$GL_HOST/api/v4/groups/$GROUP/projects?per_page=100" | jq -r ".[].id");
     do
         project_path=$(curl -s --header "PRIVATE-TOKEN: $PAT" "https://$GL_HOST/api/v4/projects/$project_id" | jq -r ".path");
         if [ ! -d $project_path ]
@@ -38,7 +38,7 @@ function cloneall_gitlab {
     done
 
     #recurse for groups
-    for sub_group_id in $(curl -s --header "PRIVATE-TOKEN: $PAT" "https://$GL_HOST/api/v4/groups/$GROUP/subgroups" | jq -r ".[].id");
+    for sub_group_id in $(curl -s --header "PRIVATE-TOKEN: $PAT" "https://$GL_HOST/api/v4/groups/$GROUP/subgroups?per_page=100" | jq -r ".[].id");
     do
         sub_group_path=$(curl -s --header "PRIVATE-TOKEN: $PAT" "https://$GL_HOST/api/v4/groups/$sub_group_id" | jq -r ".path");
         if [ ! -d $sub_group_path ]

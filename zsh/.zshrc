@@ -65,6 +65,9 @@ export NVM_DIR="$HOME/.nvm"
 #local scripts
 export PATH="$HOME/dotfiles/bin:$PATH"
 
+#pipx
+export PATH="$HOME/Library/Python/3.9/bin:$PATH"
+
 #poetry
 export PATH="$HOME/.local/bin:$PATH"
 #alias gitauthors="(base=`pwd`; for d in `find . -name .git | xargs -I % dirname %`; do; cd $d 2>&1 > /dev/null; git --no-pager shortlog -sne | cut -f 2-; cd $base ; done) | sort | uniq"

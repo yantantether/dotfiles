@@ -27,5 +27,6 @@
     "workbench.startupEditor": "none",
     "go.toolsManagement.autoUpdate": true,
     "window.zoomLevel": 1,
-    "explorer.confirmDelete": false
+    "explorer.confirmDelete": false,
+    "jest.jestCommandLine": "node.sh npx jest"
 }
