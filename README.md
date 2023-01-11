@@ -56,6 +56,12 @@ cd ~/.dotfiles
 brew bundle
 ```
 
+Or install script for managed mac
+
+```bash
+./install.sh
+```
+
 ### Symlink dotfiles with GNU stow
 
 ``` bash
