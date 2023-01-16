@@ -55,6 +55,7 @@ source $ZSH/oh-my-zsh.sh
 # node certs
 #export NODE_EXTRA_CA_CERTS=/Users/patrick.turner/.npm/nhsbsa_aws_ca_all.pem
 
+#nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -63,7 +64,7 @@ export NVM_DIR="$HOME/.nvm"
 #export PATH="/usr/local/sbin:$PATH"
 
 #local scripts
-export PATH="$HOME/dotfiles/bin:$PATH"
+export PATH="$HOME/.dotfiles/bin:$PATH"
 
 #pipx
 export PATH="$HOME/Library/Python/3.9/bin:$PATH"
