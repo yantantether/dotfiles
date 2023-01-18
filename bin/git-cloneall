@@ -1,5 +1,10 @@
 #!/bin/bash
 
+#
+# Script to clone all repositories in a Git host
+# Supports Github, Gitlab SaaS, Gitlab self-hosted
+#
+
 function checkargs {
     num_args=$1
     expected_args=$2

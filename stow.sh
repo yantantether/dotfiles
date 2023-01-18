@@ -3,10 +3,12 @@ shopt -s dotglob
 for D in $@;
 do
     echo "linking file in [$D]";
-    for P in `ls -a $D/*`;
+    for P in `ls -a $D`;
     do
-        F="$(basename -- $P)"
-        echo "linking [$PWD/$P] to [$HOME/$F]" 
-        ln -fs "$PWD/$P" "$HOME/$F"
+        if [ $P != "." ] && [ $P != ".." ]
+        then
+          echo "ln -s $PWD/$D/$P $HOME/$P"
+          ln -s "$PWD/$D/$P" "$HOME/$P"
+        fi
     done
 done
