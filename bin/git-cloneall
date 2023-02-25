@@ -13,7 +13,7 @@ function checkargs {
     then
         echo $msg
         echo "Usage:"
-        echo "cloneall <profile> <group/org ID> <optional Gitlab host>"
+        echo "git-cloneall <profile> <group/org ID> <optional Gitlab host>"
         exit $expected_args
     fi
 }
