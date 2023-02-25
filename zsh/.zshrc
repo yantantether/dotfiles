@@ -53,7 +53,7 @@ source $ZSH/oh-my-zsh.sh
 #if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 # node certs
-#export NODE_EXTRA_CA_CERTS=/Users/patrick.turner/.npm/nhsbsa_aws_ca_all.pem
+export NODE_EXTRA_CA_CERTS=${HOME}/.dotfiles/nhsbsa-ca/nhsbsa_aws_ca_all.pem
 
 #nvm
 export NVM_DIR="$HOME/.nvm"
@@ -79,4 +79,6 @@ export PATH="${HOMEBREW_PREFIX}/opt/openssl/bin:$PATH"
 #Docker
 source /Users/pattu/.docker/init-zsh.sh || true # Added by Docker Desktop
 
-#. /usr/local/opt/asdf/libexec/asdf.sh
+#Gvm
+[[ -s "/Users/pattu/.gvm/scripts/gvm" ]] && source "/Users/pattu/.gvm/scripts/gvm"
+
