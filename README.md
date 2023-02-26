@@ -71,7 +71,7 @@ stow git m2 zsh
 or create symlinks using a homegrown stow.sh if stow isn't installed
 
 ```bash
-stow.sh git m2 zsh
+stow.sh git m2 zsh node
 ```
 
 ### iterm2
