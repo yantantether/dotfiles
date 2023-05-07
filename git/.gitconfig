@@ -9,20 +9,15 @@
   bd = br -d
   lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
   db = !"git branch --merged | grep -vE 'main|master|\\*' | xargs -n 1 git branch -D"
-  so = show --pretty='parent %Cred%p%Creset commit %Cred%h%Creset%C(yellow)%d%Creset%n%n%w(72,2,2)%s%n%n%w(72,0,0)%C(cyan)%an%Creset %Cgreen%ar%Creset
+  so = show --pretty='parent %Cred%p%Creset commit %Cred%h%Creset%C(yellow)%d%Creset%n%n%w(72,2,2)%s%n%n%w(72,0,0)%C(cyan)%an%Creset %Cgreen%ar%Creset'
   dp = diff --word-diff --unified=10
   children = "!f() { git rev-list --all --not $1^@ --children | grep $(git rev-parse $1); }; f" # reachable children of a ref
 [pull]
   rebase = false
 [core]
   excludesfile = ~/.gitignore_global
-[difftool "sourcetree"]
-        cmd = code --wait --diff \"$LOCAL\" \"$REMOTE\"
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
 [commit]
-  template = /Users/patrick.turner/.dotfiles/git/.gitmessage
+  template = ~/.dotfiles/git/.gitmessage
 [init]
 	defaultBranch = main
 [merge]
