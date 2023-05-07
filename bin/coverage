@@ -1,0 +1,4 @@
+#!/bin/bash
+
+mvn --fail-never clean -X org.jacoco:jacoco-maven-plugin:prepare-agent verify && \
+    mvn org.jacoco:jacoco-maven-plugin:report
