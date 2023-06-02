@@ -1,6 +1,6 @@
 [user]
-  name = Pat Turner
-  email = patrick.turner@nhs.net
+	name = Pat Turner
+	email = pattu@nhsbsa.nhs.uk
 [includeIf "gitdir:personal"]
   path = ~/.gitconfig-personal
 [alias]
