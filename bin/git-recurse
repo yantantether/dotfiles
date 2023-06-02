@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# script to recurse through all subdirectories of PWD and execute command
+for repo in $(find . -type d -exec test -e '{}/.git' ';' -print -prune); do
+    owd=$PWD
+    cd $repo
+    if test -n "$(git rev-list -n1 --all)" &> /dev/null; then
+        eval $@
+    fi
+    cd $owd
+done
