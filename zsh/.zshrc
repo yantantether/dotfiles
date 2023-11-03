@@ -77,10 +77,12 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="${HOMEBREW_PREFIX}/opt/openssl/bin:$PATH"
 
 #Docker
-source /Users/pattu/.docker/init-zsh.sh || true # Added by Docker Desktop
+export PATH="$HOME/.docker/bin:$PATH"
 
 #Gvm
 [[ -s "/Users/pattu/.gvm/scripts/gvm" ]] && source "/Users/pattu/.gvm/scripts/gvm"
 
 # Add Visual Studio Code (code)
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
+
+source "$HOME/.asdf/asdf.sh"

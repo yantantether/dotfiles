@@ -1,0 +1,41 @@
+#!/bin/bash
+
+#
+# Script to count Git users
+#
+
+function checkargs {
+    num_args=$1
+    expected_args=$2
+    msg=$3
+    if (( $num_args < $expected_args )) ;
+    then
+        echo $msg
+        echo "Usage:"
+        echo "git-users <profile> <group/org ID> <optional Gitlab host>"
+        exit $expected_args
+    fi
+}
+
+function clone {
+    GHORG=$1
+    echo Cloning all repositories in org $GHORG
+    curl "https://api.github.com/orgs/$GHORG/repos?per_page=1000" | grep -o 'git@[^"]*' | xargs -L1 git clone    
+}
+
+checkargs $# 1 "First arg must be a profile (GH, GL, GL_DPS)"
+PROFILE=$1
+if [[ $PROFILE == GH* ]]
+then
+    checkargs $# 2 "Second arg must be a Github org ID"
+    cloneall_github $2
+elif [[ $PROFILE == GL* ]]
+then
+    checkargs $# 2 "Second arg must be a Gitlab group ID"
+    cloneall_gitlab $PROFILE $2 ${3:-"gitlab.com"}
+else
+    echo "Failed to execute any clone with profile '$PROFILE'"
+fi
+
+
+
