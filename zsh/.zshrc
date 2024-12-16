@@ -52,16 +52,13 @@ source $ZSH/oh-my-zsh.sh
 
 #if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
-# node certs
-export NODE_EXTRA_CA_CERTS=${HOME}/.dotfiles/nhsbsa-ca/nhsbsa_aws_ca_all.pem
-
 #nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #homebrew
-#export PATH="/usr/local/sbin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
 
 #local scripts
 export PATH="$HOME/.dotfiles/bin:$PATH"
@@ -86,3 +83,5 @@ export PATH="$HOME/.docker/bin:$PATH"
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 
 source "$HOME/.asdf/asdf.sh"
+
+setjdk 21
