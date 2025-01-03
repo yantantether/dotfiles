@@ -2,3 +2,4 @@ m2/.m2/repository
 m2/.m2/wrapper
 Brewfile.lock.json
 .DS_Store
+cve-scan
