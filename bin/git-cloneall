@@ -33,12 +33,15 @@ function cloneall_gitlab {
         project_path=$(curl -s --header "PRIVATE-TOKEN: $PAT" "https://$GL_HOST/api/v4/projects/$project_id" | jq -r ".path");
         if [ ! -d $project_path ]
         then
-            project_ssh_url=$(curl -s --header "PRIVATE-TOKEN: $PAT" "https://$GL_HOST/api/v4/projects/$project_id" | jq -r ".ssh_url_to_repo");
-            echo "git clone $project_path"
-            git clone $project_ssh_url;
+            project_ssh_url=$(curl -s --header "PRIVATE-TOKEN: $PAT" "https://$GL_HOST/api/v4/projects/$project_id" | jq -r ".http_url_to_repo");
+            echo "cloning $project_path"
+            git clone $project_ssh_url $project_path;
         else
-            echo "git pull $project_path"
-            (cd $project_path; git pull)
+            echo "updating $project_path"
+            cd $project_path
+            git remote update
+            git pull --ff-only
+            cd -
         fi
     done
 
@@ -63,7 +66,7 @@ function cloneall_github {
     curl "https://api.github.com/orgs/$GHORG/repos?per_page=1000" | grep -o 'git@[^"]*' | xargs -L1 git clone    
 }
 
-checkargs $# 1 "First arg must be a profile (GH, GL, GL_DPS)"
+checkargs $# 1 "First arg must be a profile (GH, GL)"
 PROFILE=$1
 if [[ $PROFILE == GH* ]]
 then
